@@ -5,5 +5,9 @@
   "editor.formatOnType": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.biome": "explicit"
+  },
+  "material-icon-theme.folders.associations": {
+    "api-client": "api",     // packages/api-client フォルダにAPIアイコン
+    "openapi": "docs",       // packages/openapi フォルダにドキュメントアイコン
   }
 }
