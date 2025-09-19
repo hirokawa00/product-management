@@ -6,21 +6,19 @@
  * OpenAPI spec version: 1.0.0
  */
 
-export interface Category {
-  /** カテゴリID */
-  category_id?: string;
-  /** カテゴリ名 */
+export interface Brand {
+  /** ブランドID */
+  brand_id?: string;
+  /** ブランド名 */
   name?: string;
-  /** カテゴリ名（英語） */
+  /** ブランド名（英語） */
   name_en?: string;
   /** 説明 */
   description?: string;
-  /** 親カテゴリID */
-  parent_category_id?: string;
-  /** 階層レベル */
-  level?: number;
-  /** ソート順 */
-  sort_order?: number;
+  /** ロゴURL */
+  logo_url?: string;
+  /** ウェブサイトURL */
+  website_url?: string;
   /** 有効フラグ */
   is_active?: boolean;
   created_at?: string;

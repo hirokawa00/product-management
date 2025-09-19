@@ -5,10 +5,11 @@
  * 商品情報管理システムのAPI定義
  * OpenAPI spec version: 1.0.0
  */
-import type { ErrorDetails } from './error_details';
+import type { ImageType } from './image_type';
 
-export interface Error {
-  error_code?: string;
-  message?: string;
-  details?: ErrorDetails;
-}
+export type PostProductsProductIdImagesBody = {
+  file?: Blob;
+  image_type?: ImageType;
+  alt_text?: string;
+  display_order?: number;
+};

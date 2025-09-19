@@ -5,10 +5,12 @@
  * 商品情報管理システムのAPI定義
  * OpenAPI spec version: 1.0.0
  */
-import type { ErrorDetails } from './error_details';
 
-export interface Error {
-  error_code?: string;
-  message?: string;
-  details?: ErrorDetails;
+export interface Pagination {
+  current_page?: number;
+  per_page?: number;
+  total_pages?: number;
+  total_count?: number;
+  has_next?: boolean;
+  has_prev?: boolean;
 }

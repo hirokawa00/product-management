@@ -14,20 +14,15 @@
     }
   },
   "scripts": {
-    "build": "tsc --build",
+    "build": "barrelsby --directory src/endpoints --delete && tsc --build",
     "clean": "rm -rf dist",
     "barrel": "barrelsby --directory src/endpoints --delete"
   },
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "@tanstack/react-query": "5.89.0",
-    "axios": "1.12.2"
-  },
   "devDependencies": {
     "@faker-js/faker": "10.0.0",
-    "barrelsby": "^2.8.1",
-    "msw": "2.11.2"
+    "barrelsby": "^2.8.1"
   }
 }

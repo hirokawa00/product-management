@@ -5,10 +5,8 @@
  * 商品情報管理システムのAPI定義
  * OpenAPI spec version: 1.0.0
  */
-import type { ErrorDetails } from './error_details';
 
-export interface Error {
-  error_code?: string;
-  message?: string;
-  details?: ErrorDetails;
-}
+export type ProductPhysicalPropertiesWeight = {
+  value?: number;
+  unit_id?: string;
+};

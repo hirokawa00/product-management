@@ -5,10 +5,9 @@
  * 商品情報管理システムのAPI定義
  * OpenAPI spec version: 1.0.0
  */
-import type { ErrorDetails } from './error_details';
+import type { Error } from './error';
 
-export interface Error {
-  error_code?: string;
-  message?: string;
-  details?: ErrorDetails;
-}
+/**
+ * リクエストが不正です
+ */
+export type BadRequestResponse = Error;

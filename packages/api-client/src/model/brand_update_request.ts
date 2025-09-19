@@ -5,10 +5,12 @@
  * 商品情報管理システムのAPI定義
  * OpenAPI spec version: 1.0.0
  */
-import type { ErrorDetails } from './error_details';
 
-export interface Error {
-  error_code?: string;
-  message?: string;
-  details?: ErrorDetails;
+export interface BrandUpdateRequest {
+  name?: string;
+  name_en?: string;
+  description?: string;
+  logo_url?: string;
+  website_url?: string;
+  is_active?: boolean;
 }

@@ -5,10 +5,10 @@
  * 商品情報管理システムのAPI定義
  * OpenAPI spec version: 1.0.0
  */
-import type { ErrorDetails } from './error_details';
+import type { Product } from './product';
+import type { Pagination } from './pagination';
 
-export interface Error {
-  error_code?: string;
-  message?: string;
-  details?: ErrorDetails;
-}
+export type GetProducts200 = {
+  data?: Product[];
+  pagination?: Pagination;
+};
