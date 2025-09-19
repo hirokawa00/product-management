@@ -20,7 +20,7 @@ import type {
 } from '../../model';
 
 
-export const getGetMastersCategoriesResponseMock = (): Category[] => (Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({category_id: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), name: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), name_en: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), description: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), parent_category_id: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), level: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), sort_order: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), is_active: faker.helpers.arrayElement([faker.datatype.boolean(), undefined]), created_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), updated_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined])})))
+export const getGetMastersCategoriesResponseMock = (): Category[] => (Array.from({ length: faker.number.int({ min: 0, max: 100 }) }, (_, i) => i + 1).map(() => ({category_id: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), name: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), name_en: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), description: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), parent_category_id: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), level: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), sort_order: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), is_active: faker.helpers.arrayElement([faker.datatype.boolean(), undefined]), created_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), updated_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined])})))
 
 export const getPostMastersCategoriesResponseMock = (overrideResponse: Partial< Category > = {}): Category => ({category_id: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), name: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), name_en: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), description: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), parent_category_id: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), level: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), sort_order: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), is_active: faker.helpers.arrayElement([faker.datatype.boolean(), undefined]), created_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), updated_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), ...overrideResponse})
 
@@ -30,7 +30,7 @@ export const getPutMastersCategoriesCategoryIdResponseMock = (overrideResponse: 
 
 
 export const getGetMastersCategoriesMockHandler = (overrideResponse?: Category[] | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<Category[]> | Category[])) => {
-  return http.get('*/masters/categories', async (info) => {await delay(1000);
+  return http.get('*/masters/categories', async (info) => {await delay(3000);
   
     return new HttpResponse(JSON.stringify(overrideResponse !== undefined
     ? (typeof overrideResponse === "function" ? await overrideResponse(info) : overrideResponse)
@@ -42,7 +42,7 @@ export const getGetMastersCategoriesMockHandler = (overrideResponse?: Category[]
 }
 
 export const getPostMastersCategoriesMockHandler = (overrideResponse?: Category | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<Category> | Category)) => {
-  return http.post('*/masters/categories', async (info) => {await delay(1000);
+  return http.post('*/masters/categories', async (info) => {await delay(3000);
   
     return new HttpResponse(JSON.stringify(overrideResponse !== undefined
     ? (typeof overrideResponse === "function" ? await overrideResponse(info) : overrideResponse)
@@ -54,7 +54,7 @@ export const getPostMastersCategoriesMockHandler = (overrideResponse?: Category 
 }
 
 export const getGetMastersCategoriesCategoryIdMockHandler = (overrideResponse?: Category | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<Category> | Category)) => {
-  return http.get('*/masters/categories/:categoryId', async (info) => {await delay(1000);
+  return http.get('*/masters/categories/:categoryId', async (info) => {await delay(3000);
   
     return new HttpResponse(JSON.stringify(overrideResponse !== undefined
     ? (typeof overrideResponse === "function" ? await overrideResponse(info) : overrideResponse)
@@ -66,7 +66,7 @@ export const getGetMastersCategoriesCategoryIdMockHandler = (overrideResponse?: 
 }
 
 export const getPutMastersCategoriesCategoryIdMockHandler = (overrideResponse?: Category | ((info: Parameters<Parameters<typeof http.put>[1]>[0]) => Promise<Category> | Category)) => {
-  return http.put('*/masters/categories/:categoryId', async (info) => {await delay(1000);
+  return http.put('*/masters/categories/:categoryId', async (info) => {await delay(3000);
   
     return new HttpResponse(JSON.stringify(overrideResponse !== undefined
     ? (typeof overrideResponse === "function" ? await overrideResponse(info) : overrideResponse)
@@ -78,7 +78,7 @@ export const getPutMastersCategoriesCategoryIdMockHandler = (overrideResponse?: 
 }
 
 export const getDeleteMastersCategoriesCategoryIdMockHandler = (overrideResponse?: null | ((info: Parameters<Parameters<typeof http.delete>[1]>[0]) => Promise<null> | null)) => {
-  return http.delete('*/masters/categories/:categoryId', async (info) => {await delay(1000);
+  return http.delete('*/masters/categories/:categoryId', async (info) => {await delay(3000);
   if (typeof overrideResponse === 'function') {await overrideResponse(info); }
     return new HttpResponse(null,
       { status: 204,

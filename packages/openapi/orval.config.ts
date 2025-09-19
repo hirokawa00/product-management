@@ -10,11 +10,22 @@ export default defineConfig({
       client: 'react-query',
       clean: true, 
       biome: true,
-      mock: true,
       httpClient: 'fetch',
       schemas: '../api-client/src/model',
       fileExtension: '.gen.ts',
-      namingConvention:'snake_case'
+      namingConvention:'snake_case',
+      mock: {
+        type: 'msw', // MSWを使用
+        delay: 3000, // レスポンス遅延（ms）
+        indexMockFiles: true,
+        
+      },
+      override: {
+        mock: {
+          arrayMin: 0,
+          arrayMax: 100,
+        },
+      },
     },
   },
 });

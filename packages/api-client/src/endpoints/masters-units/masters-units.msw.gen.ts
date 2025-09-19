@@ -23,13 +23,13 @@ import type {
 } from '../../model';
 
 
-export const getGetMastersUnitsResponseMock = (): Unit[] => (Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({unit_id: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), name: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), symbol: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), unit_type: faker.helpers.arrayElement([faker.helpers.arrayElement(Object.values(UnitType)), undefined]), conversion_factor: faker.helpers.arrayElement([faker.number.float({min: undefined, max: undefined, fractionDigits: 2}), undefined]), base_unit_id: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), is_active: faker.helpers.arrayElement([faker.datatype.boolean(), undefined]), created_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), updated_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined])})))
+export const getGetMastersUnitsResponseMock = (): Unit[] => (Array.from({ length: faker.number.int({ min: 0, max: 100 }) }, (_, i) => i + 1).map(() => ({unit_id: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), name: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), symbol: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), unit_type: faker.helpers.arrayElement([faker.helpers.arrayElement(Object.values(UnitType)), undefined]), conversion_factor: faker.helpers.arrayElement([faker.number.float({min: undefined, max: undefined, fractionDigits: 2}), undefined]), base_unit_id: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), is_active: faker.helpers.arrayElement([faker.datatype.boolean(), undefined]), created_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), updated_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined])})))
 
 export const getPostMastersUnitsResponseMock = (overrideResponse: Partial< Unit > = {}): Unit => ({unit_id: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), name: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), symbol: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), unit_type: faker.helpers.arrayElement([faker.helpers.arrayElement(Object.values(UnitType)), undefined]), conversion_factor: faker.helpers.arrayElement([faker.number.float({min: undefined, max: undefined, fractionDigits: 2}), undefined]), base_unit_id: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), is_active: faker.helpers.arrayElement([faker.datatype.boolean(), undefined]), created_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), updated_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), ...overrideResponse})
 
 
 export const getGetMastersUnitsMockHandler = (overrideResponse?: Unit[] | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<Unit[]> | Unit[])) => {
-  return http.get('*/masters/units', async (info) => {await delay(1000);
+  return http.get('*/masters/units', async (info) => {await delay(3000);
   
     return new HttpResponse(JSON.stringify(overrideResponse !== undefined
     ? (typeof overrideResponse === "function" ? await overrideResponse(info) : overrideResponse)
@@ -41,7 +41,7 @@ export const getGetMastersUnitsMockHandler = (overrideResponse?: Unit[] | ((info
 }
 
 export const getPostMastersUnitsMockHandler = (overrideResponse?: Unit | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<Unit> | Unit)) => {
-  return http.post('*/masters/units', async (info) => {await delay(1000);
+  return http.post('*/masters/units', async (info) => {await delay(3000);
   
     return new HttpResponse(JSON.stringify(overrideResponse !== undefined
     ? (typeof overrideResponse === "function" ? await overrideResponse(info) : overrideResponse)

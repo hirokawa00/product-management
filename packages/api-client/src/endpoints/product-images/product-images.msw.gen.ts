@@ -23,7 +23,7 @@ import type {
 } from '../../model';
 
 
-export const getGetProductsProductIdImagesResponseMock = (): ProductImage[] => (Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({image_id: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), product_id: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), image_type: faker.helpers.arrayElement([faker.helpers.arrayElement(Object.values(ImageType)), undefined]), file_name: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), file_size: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), mime_type: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), url: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), alt_text: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), display_order: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), is_primary: faker.helpers.arrayElement([faker.datatype.boolean(), undefined]), created_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), updated_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined])})))
+export const getGetProductsProductIdImagesResponseMock = (): ProductImage[] => (Array.from({ length: faker.number.int({ min: 0, max: 100 }) }, (_, i) => i + 1).map(() => ({image_id: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), product_id: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), image_type: faker.helpers.arrayElement([faker.helpers.arrayElement(Object.values(ImageType)), undefined]), file_name: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), file_size: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), mime_type: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), url: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), alt_text: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), display_order: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), is_primary: faker.helpers.arrayElement([faker.datatype.boolean(), undefined]), created_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), updated_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined])})))
 
 export const getPostProductsProductIdImagesResponseMock = (overrideResponse: Partial< ProductImage > = {}): ProductImage => ({image_id: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), product_id: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), image_type: faker.helpers.arrayElement([faker.helpers.arrayElement(Object.values(ImageType)), undefined]), file_name: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), file_size: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), mime_type: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), url: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), alt_text: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), display_order: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), is_primary: faker.helpers.arrayElement([faker.datatype.boolean(), undefined]), created_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), updated_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), ...overrideResponse})
 
@@ -31,7 +31,7 @@ export const getPutProductsProductIdImagesImageIdResponseMock = (overrideRespons
 
 
 export const getGetProductsProductIdImagesMockHandler = (overrideResponse?: ProductImage[] | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<ProductImage[]> | ProductImage[])) => {
-  return http.get('*/products/:productId/images', async (info) => {await delay(1000);
+  return http.get('*/products/:productId/images', async (info) => {await delay(3000);
   
     return new HttpResponse(JSON.stringify(overrideResponse !== undefined
     ? (typeof overrideResponse === "function" ? await overrideResponse(info) : overrideResponse)
@@ -43,7 +43,7 @@ export const getGetProductsProductIdImagesMockHandler = (overrideResponse?: Prod
 }
 
 export const getPostProductsProductIdImagesMockHandler = (overrideResponse?: ProductImage | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<ProductImage> | ProductImage)) => {
-  return http.post('*/products/:productId/images', async (info) => {await delay(1000);
+  return http.post('*/products/:productId/images', async (info) => {await delay(3000);
   
     return new HttpResponse(JSON.stringify(overrideResponse !== undefined
     ? (typeof overrideResponse === "function" ? await overrideResponse(info) : overrideResponse)
@@ -55,7 +55,7 @@ export const getPostProductsProductIdImagesMockHandler = (overrideResponse?: Pro
 }
 
 export const getPutProductsProductIdImagesImageIdMockHandler = (overrideResponse?: ProductImage | ((info: Parameters<Parameters<typeof http.put>[1]>[0]) => Promise<ProductImage> | ProductImage)) => {
-  return http.put('*/products/:productId/images/:imageId', async (info) => {await delay(1000);
+  return http.put('*/products/:productId/images/:imageId', async (info) => {await delay(3000);
   
     return new HttpResponse(JSON.stringify(overrideResponse !== undefined
     ? (typeof overrideResponse === "function" ? await overrideResponse(info) : overrideResponse)
@@ -67,7 +67,7 @@ export const getPutProductsProductIdImagesImageIdMockHandler = (overrideResponse
 }
 
 export const getDeleteProductsProductIdImagesImageIdMockHandler = (overrideResponse?: null | ((info: Parameters<Parameters<typeof http.delete>[1]>[0]) => Promise<null> | null)) => {
-  return http.delete('*/products/:productId/images/:imageId', async (info) => {await delay(1000);
+  return http.delete('*/products/:productId/images/:imageId', async (info) => {await delay(3000);
   if (typeof overrideResponse === 'function') {await overrideResponse(info); }
     return new HttpResponse(null,
       { status: 204,

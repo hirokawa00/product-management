@@ -20,7 +20,7 @@ import type {
 } from '../../model';
 
 
-export const getGetMastersBrandsResponseMock = (): Brand[] => (Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({brand_id: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), name: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), name_en: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), description: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), logo_url: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), website_url: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), is_active: faker.helpers.arrayElement([faker.datatype.boolean(), undefined]), created_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), updated_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined])})))
+export const getGetMastersBrandsResponseMock = (): Brand[] => (Array.from({ length: faker.number.int({ min: 0, max: 100 }) }, (_, i) => i + 1).map(() => ({brand_id: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), name: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), name_en: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), description: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), logo_url: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), website_url: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), is_active: faker.helpers.arrayElement([faker.datatype.boolean(), undefined]), created_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), updated_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined])})))
 
 export const getPostMastersBrandsResponseMock = (overrideResponse: Partial< Brand > = {}): Brand => ({brand_id: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), name: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), name_en: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), description: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), logo_url: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), website_url: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), is_active: faker.helpers.arrayElement([faker.datatype.boolean(), undefined]), created_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), updated_at: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]), ...overrideResponse})
 
@@ -30,7 +30,7 @@ export const getPutMastersBrandsBrandIdResponseMock = (overrideResponse: Partial
 
 
 export const getGetMastersBrandsMockHandler = (overrideResponse?: Brand[] | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<Brand[]> | Brand[])) => {
-  return http.get('*/masters/brands', async (info) => {await delay(1000);
+  return http.get('*/masters/brands', async (info) => {await delay(3000);
   
     return new HttpResponse(JSON.stringify(overrideResponse !== undefined
     ? (typeof overrideResponse === "function" ? await overrideResponse(info) : overrideResponse)
@@ -42,7 +42,7 @@ export const getGetMastersBrandsMockHandler = (overrideResponse?: Brand[] | ((in
 }
 
 export const getPostMastersBrandsMockHandler = (overrideResponse?: Brand | ((info: Parameters<Parameters<typeof http.post>[1]>[0]) => Promise<Brand> | Brand)) => {
-  return http.post('*/masters/brands', async (info) => {await delay(1000);
+  return http.post('*/masters/brands', async (info) => {await delay(3000);
   
     return new HttpResponse(JSON.stringify(overrideResponse !== undefined
     ? (typeof overrideResponse === "function" ? await overrideResponse(info) : overrideResponse)
@@ -54,7 +54,7 @@ export const getPostMastersBrandsMockHandler = (overrideResponse?: Brand | ((inf
 }
 
 export const getGetMastersBrandsBrandIdMockHandler = (overrideResponse?: Brand | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<Brand> | Brand)) => {
-  return http.get('*/masters/brands/:brandId', async (info) => {await delay(1000);
+  return http.get('*/masters/brands/:brandId', async (info) => {await delay(3000);
   
     return new HttpResponse(JSON.stringify(overrideResponse !== undefined
     ? (typeof overrideResponse === "function" ? await overrideResponse(info) : overrideResponse)
@@ -66,7 +66,7 @@ export const getGetMastersBrandsBrandIdMockHandler = (overrideResponse?: Brand |
 }
 
 export const getPutMastersBrandsBrandIdMockHandler = (overrideResponse?: Brand | ((info: Parameters<Parameters<typeof http.put>[1]>[0]) => Promise<Brand> | Brand)) => {
-  return http.put('*/masters/brands/:brandId', async (info) => {await delay(1000);
+  return http.put('*/masters/brands/:brandId', async (info) => {await delay(3000);
   
     return new HttpResponse(JSON.stringify(overrideResponse !== undefined
     ? (typeof overrideResponse === "function" ? await overrideResponse(info) : overrideResponse)
@@ -78,7 +78,7 @@ export const getPutMastersBrandsBrandIdMockHandler = (overrideResponse?: Brand |
 }
 
 export const getDeleteMastersBrandsBrandIdMockHandler = (overrideResponse?: null | ((info: Parameters<Parameters<typeof http.delete>[1]>[0]) => Promise<null> | null)) => {
-  return http.delete('*/masters/brands/:brandId', async (info) => {await delay(1000);
+  return http.delete('*/masters/brands/:brandId', async (info) => {await delay(3000);
   if (typeof overrideResponse === 'function') {await overrideResponse(info); }
     return new HttpResponse(null,
       { status: 204,

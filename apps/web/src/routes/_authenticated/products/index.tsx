@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import {useGetProducts ,getProducts} from '@product-management/api-client'
+import {useGetProducts ,getProducts , type Product} from '@product-management/api-client'
 import {queryClient} from '@/lib/query-client'
 
 /**
@@ -22,14 +22,19 @@ export const Route = createFileRoute('/_authenticated/products/')({
 function ProductContainer() {
 
   const {data} = useGetProducts()
-  console.log('data',data )
-  return <ProductPrecenter />
+  return <ProductPrecenter data={data?.data.data}/>
+}
+
+interface ProductPrecenterProps  {
+  data : Product[] | undefined
 }
 
 /**
  * 商品プレゼンテーション層
  * @returns 
  */
-function ProductPrecenter() {
+function ProductPrecenter(props : ProductPrecenterProps) {
+
+  console.log('data', props)
   return <div>Hello "/_authenticated/products/"!</div>
 }
